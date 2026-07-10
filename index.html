@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MIDNIGHT-RELAX</title>
+    
+    <script src="https://pl30200751.effectivecpmnetwork.com/7c/62/e5/7c62e523a048df558686896a53a4c525.js"></script>
+    <script src="https://pl30200752.effectivecpmnetwork.com/e0/11/0e/e0110eb1ee8550c29e1b5ba2aa848d8f.js"></script>
+
+    <style>
+        :root {
+            --body-bg: #02060E;          
+            --app-bg: #050d1a;           
+            --card-bg: #0b1526;          
+            --neon-green: #007D10;         
+            --green-glow: #00b316;        
+            --text-main: #ffffff;
+            --text-muted: #9fa4b0;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Roboto, -apple-system, sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+            font-weight: 700;
+        }
+        
+        body { 
+            background-color: var(--body-bg);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 480px; 
+            background-color: var(--app-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 👑 Premium Header Setup (Mixer Color Gradient) */
+        .premium-header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 16px 10px 16px;
+            border-top: 3px solid var(--neon-green);
+            background: linear-gradient(180deg, #012406 0%, #050d1a 100%);
+        }
+
+        /* MIDNIGHT-RELAX Left Title Wave Animation */
+        .wave-title-container { display: flex; gap: 1px; cursor: pointer; }
+        .wave-letter {
+            font-size: 19px; color: #ffffff; font-weight: 900;
+            text-shadow: 0 0 8px rgba(0, 125, 16, 0.5);
+            display: inline-block; animation: textWaveAnimation 1.6s ease-in-out infinite;
+        }
+        .wave-letter:nth-child(1) { animation-delay: 0.0s; }
+        .wave-letter:nth-child(2) { animation-delay: 0.1s; }
+        .wave-letter:nth-child(3) { animation-delay: 0.2s; }
+        .wave-letter:nth-child(4) { animation-delay: 0.3s; }
+        .wave-letter:nth-child(5) { animation-delay: 0.4s; }
+        .wave-letter:nth-child(6) { animation-delay: 0.5s; }
+        .wave-letter:nth-child(7) { animation-delay: 0.6s; }
+        .wave-letter:nth-child(8) { animation-delay: 0.7s; }
+        .wave-letter:nth-child(9) { animation-delay: 0.8s; }
+        .wave-letter:nth-child(10) { animation-delay: 0.9s; }
+        .wave-letter:nth-child(11) { animation-delay: 1.0s; }
+        .wave-letter:nth-child(12) { animation-delay: 1.1s; }
+        .wave-letter:nth-child(13) { animation-delay: 1.2s; }
+        .wave-letter:nth-child(14) { animation-delay: 1.3s; }
+        
+        @keyframes textWaveAnimation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); color: #00ff22; text-shadow: 0 0 12px #00ff22; }
+        }
+
+        /* Home Hub Button Styling */
+        .home-hub-btn {
+            background-color: rgba(0, 125, 16, 0.2);
+            border: 1px solid var(--neon-green);
+            color: #ffffff; padding: 6px 14px; border-radius: 4px;
+            font-size: 12px; cursor: pointer; text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .home-hub-btn:hover { background-color: var(--neon-green); box-shadow: 0 0 8px var(--green-glow); }
+
+        /* Search Bar Layout */
+        .search-container { padding: 8px 16px 10px 16px; }
+        .search-box {
+            display: flex; background-color: #081224;
+            border: 1px solid #14243b; border-radius: 6px;
+            overflow: hidden; padding: 2px 14px; align-items: center;
+        }
+        .search-box input {
+            flex-grow: 1; background: transparent; border: none;
+            padding: 10px 0; color: #ffffff; font-size: 13px; outline: none;
+        }
+        .search-box input::placeholder { color: #43546c; }
+        .search-icon-btn { background: transparent; border: none; color: #5a7191; cursor: pointer; font-size: 14px; }
+
+        /* Category Pills Tab Bar Below Search Bar */
+        .exact-tabs-container {
+            display: flex; gap: 8px; overflow-x: auto;
+            padding: 4px 16px 12px 16px; scrollbar-width: none;
+        }
+        .exact-tabs-container::-webkit-scrollbar { display: none; }
+        .tab-pill {
+            flex: 0 0 auto; text-align: center; background-color: #061021;
+            border: 1px solid #11223b; padding: 8px 14px; border-radius: 4px;
+            cursor: pointer; font-size: 12px; color: #9fa4b0; white-space: nowrap;
+        }
+        .tab-pill.active { background-color: #007D10; border-color: #00ff22; color: #ffffff; font-weight: 800; box-shadow: 0 0 8px rgba(0, 255, 34, 0.3); }
+
+        /* Main Content View Frame Wrapper */
+        .main-view-wrapper { padding: 0 16px 40px 16px; }
+
+        /* Section Title Green Line */
+        .exact-section-title { margin: 10px 0 14px 0; display: flex; align-items: center; }
+        .exact-section-title h3 { font-size: 16px; color: #ffffff; display: flex; align-items: center; gap: 8px; }
+        .exact-section-title h3::before {
+            content: ''; display: inline-block; width: 4px; height: 18px;
+            background-color: var(--neon-green); border-radius: 2px; box-shadow: 0 0 6px var(--green-glow);
+        }
+
+        /* 🔲 Video Elements Cards Grid with Green Frame Outline */
+        .exact-video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .video-grid-card {
+            background-color: var(--card-bg);
+            border: 1.5px solid var(--neon-green); 
+            border-radius: 8px; overflow: hidden;
+            display: flex; flex-direction: column; cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 125, 16, 0.15);
+            transition: transform 0.2s ease;
+        }
+        .video-grid-card:style { transform: scale(0.98); }
+        .video-thumb-holder { width: 100%; aspect-ratio: 16/10; background-color: #000; position: relative; }
+        .video-thumb-holder img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Country Badge Layout Overlay */
+        .country-flag-badge {
+            position: absolute; top: 6px; left: 6px;
+            background-color: rgba(2, 6, 14, 0.85); border: 1px solid #142844;
+            padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; font-size: 10px; color: #ffffff;
+        }
+
+        .video-card-details { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .video-card-details h4 {
+            font-size: 12px; color: #ffffff; line-height: 1.4;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+            margin-bottom: 6px; font-weight: 500;
+        }
+        .video-card-meta { font-size: 10px; color: #7687a1; }
+
+        /* 🎬 Advanced Dedicated Video View Page Frame Layout */
+        #dedicatedVideoPage { display: none; }
+        
+        /* Back to Feed Navigation Button Style */
+        .back-nav-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background-color: #081224; border: 1px solid #14243b;
+            color: #ffffff; padding: 8px 16px; border-radius: 6px;
+            font-size: 12px; cursor: pointer; margin-bottom: 14px;
+            transition: all 0.2s ease;
+        }
+        .back-nav-btn:hover { background-color: #0f1f38; border-color: var(--neon-green); }
+        .back-nav-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+        .cinema-theater-panel {
+            background-color: #000; border-radius: 8px;
+            margin: 0 0 16px 0; overflow: hidden; border: 1.5px solid var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 125, 16, 0.2);
+        }
+        .video-player-outer-box { width: 100%; aspect-ratio: 16/9; background: #000; }
+        .video-player-outer-box iframe { width: 100%; height: 100%; border: none; }
+        .cinema-title-heading { font-size: 13px; color: #ffffff; padding: 12px; background-color: var(--card-bg); }
+
+        /* VIP Premium Layout Card */
+        .exact-vip-card {
+            background-color: #050f1f; border: 1px solid #102544;
+            border-radius: 12px; padding: 15px; display: flex;
+            align-items: center; gap: 12px; margin: 10px 0 20px 0;
+        }
+        .vip-crown-box {
+            width: 46px; height: 46px; background: radial-gradient(circle, #022407 0%, #030a14 100%);
+            border: 1px solid #e6a10b; border-radius: 50%; display: flex; justify-content: center; align-items: center; flex-shrink: 0;
+        }
+        .vip-text-middle { flex-grow: 1; font-size: 12px; line-height: 1.6; color: #d1d5db; }
+        .vip-text-middle span.highlight-price { color: #ffcc00; font-weight: 900; }
+
+        .runner-vip-btn {
+            display: flex; justify-content: center; align-items: center;
+            padding: 9px 15px; font-size: 11px; color: #ffffff; text-decoration: none;
+            white-space: nowrap; border-radius: 20px; font-weight: 800;
+            background: linear-gradient(90deg, #007D10, #00ff44, #007cf0, #007D10);
+            background-size: 300% 100%; animation: runnerAnimation 2s linear infinite;
+            box-shadow: 0 0 8px rgba(0, 255, 68, 0.3); flex-shrink: 0;
+        }
+        @keyframes runnerAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 📢 Notice Popup Area Overlay Box */
+        .notice-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 14, 0.9); z-index: 10000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: all 0.25s ease;
+        }
+        .notice-overlay.show { opacity: 1; visibility: visible; }
+        .notice-box {
+            width: 86%; max-width: 340px; background-color: #0b1526;
+            border: 1.5px solid var(--neon-green); border-radius: 12px; padding: 24px; text-align: center;
+            box-shadow: 0 0 15px rgba(0, 125, 16, 0.3);
+        }
+        .notice-title { font-size: 17px; color: #ffffff; margin-bottom: 12px; }
+        .notice-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 22px; font-weight: 400; }
+        .notice-btn { width: 100%; background: var(--neon-green); color: #ffffff; border: none; padding: 11px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+        .notice-btn:hover { background-color: #009914; }
+
+        .loader { display: block; margin: 20px auto; border: 3px solid rgba(255,255,255,0.05); border-top: 3px solid var(--neon-green); border-radius: 50%; width: 26px; height: 26px; animation: spin 0.8s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div class="notice-overlay" id="noticePopup">
+    <div class="notice-box">
+        <div class="notice-title">📢 သတိပေးချက်</div>
+        <div class="notice-text">
+            MIDNIGHT-RELAX မှ လှိုက်လှဲစွာ ကြိုဆိုပါသည်။ ကျွန်ုပ်တို့ဆိုက်သည် နေ့စဉ် အရည်အသွေးမြင့်မားသော ပရီမီယမ်ကားများကို အခမဲ့ စဉ်ဆက်မပြတ် တင်ဆက်ပေးနေပါသည်။
+        </div>
+        <button class="notice-btn" onclick="closeNotice()">👌 ဖတ်ပြီးပါပြီ</button>
+    </div>
+</div>
+
+<div class="app-container">
+
+    <div class="premium-header-nav">
+        <div class="wave-title-container" onclick="backToHomeFeed()">
+            <span class="wave-letter">M</span>
+            <span class="wave-letter">I</span>
+            <span class="wave-letter">D</span>
+            <span class="wave-letter">N</span>
+            <span class="wave-letter">I</span>
+            <span class="wave-letter">G</span>
+            <span class="wave-letter">H</span>
+            <span class="wave-letter">T</span>
+            <span class="wave-letter">-</span>
+            <span class="wave-letter">R</span>
+            <span class="wave-letter">E</span>
+            <span class="wave-letter">L</span>
+            <span class="wave-letter">A</span>
+            <span class="wave-letter">X</span>
+        </div>
+        <button class="home-hub-btn" onclick="backToHomeFeed()">Home Hub</button>
+    </div>
+
+    <div class="search-container" id="searchBarBlock">
+        <div class="search-box">
+            <input type="text" id="userSearchInput" placeholder="ရှာဖွေလိုသည်များကို ရိုက်ထည့်ပါ..." onkeypress="handleSearchKeyPress(event)">
+            <button class="search-icon-btn" onclick="triggerSearch()">🔍</button>
+        </div>
+    </div>
+
+    <div class="exact-tabs-container" id="categoryPillsBlock">
+        <div class="tab-pill active" id="tab-all" onclick="fetchNewCategory('myanmar', 'all')">မြန်မာကားများ</div>
+        <div class="tab-pill" id="tab-asia" onclick="fetchNewCategory('asian', 'asia')">အာရှ</div>
+        <div class="tab-pill" id="tab-japan" onclick="fetchNewCategory('japan', 'japan')">ဂျပန်</div>
+        <div class="tab-pill" id="tab-mamas" onclick="fetchNewCategory('mamas', 'mamas')">မမများ</div>
+        <div class="tab-pill" id="tab-leak" onclick="fetchNewCategory('Leak', 'leak')">ချောင်းရိုက်</div>
+    </div>
+
+    <div class="main-view-wrapper">
+
+        <div id="homeFeedPage">
+            <div class="exact-section-title">
+                <h3>နောက်ဆုံးရ ကားများ</h3>
+            </div>
+            <div class="exact-video-grid" id="mainVideoGrid"></div>
+        </div>
+
+        <div id="dedicatedVideoPage">
+            
+            <button class="back-nav-btn" onclick="backToHomeFeed()">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                နောက်သို့ပြန်သွားရန်
+            </button>
+
+            <div class="cinema-theater-panel">
+                <div class="video-player-outer-box">
+                    <iframe id="videoIframe" src="" allowfullscreen></iframe>
+                </div>
+                <h3 class="cinema-title-heading" id="videoTitle">Streaming...</h3>
+            </div>
+
+            <div class="exact-vip-card">
+                <div class="vip-crown-box"><span>👑</span></div>
+                <div class="vip-text-middle">
+
+လူ''ကြီးကားတွေ ကြည့်ရတာရိုးလာရင် 
+က_*လေးကား၊ V_I-P 2-0-0-0-0ks နဲ့လာဝင်လို့ရ၊ အရေတွက် 4000 ကျော်ပါ၊ Save လို့ရ။ 5000 တန်Vip နှစ်ခုလက်ဆောင်ပေးပါတယ်ခင်ဗျာ။
+                </div>
+                <a class="runner-vip-btn" id="vipActionUrl" href="" target="_blank">VIP ဝယ်မည်</a>
+            </div>
+
+            <div class="exact-section-title">
+                <h3>RELATED VIDEOS</h3>
+            </div>
+
+            <div class="exact-video-grid" id="relatedVideoGrid"></div>
+        </div>
+
+        <div class="loader" id="networkLoader" style="display:none;"></div>
+
+    </div>
+
+</div>
+
+<script>
+    const API_URL = 'https://www.eporner.com/api/v2/video/search/';
+    let currentKeyword = 'myanmar';
+    let currentPage = 1;
+    let loading = false;
+    let appendMode = false;
+    let viewModeActive = false; 
+    let loadedVideoIds = new Set(); 
+
+    const tgBaseUrl = "https://t.me/Dr_Bogyi?text=" + encodeURIComponent("Vip ဝင်ချင်လို့ပါ ငွေလွှဲရမဲ့ နံပါတ်လေးပို့ပေးပါ");
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("vipActionUrl").setAttribute("href", tgBaseUrl);
+        document.getElementById("noticePopup").classList.add("show");
+        startEngine();
+    });
+
+    function closeNotice() { document.getElementById("noticePopup").classList.remove("show"); }
+
+    function startEngine() {
+        appendMode = false;
+        loadedVideoIds.clear(); 
+        currentPage = Math.floor(Math.random() * 5) + 1;
+        loadContentFeed(currentKeyword, currentPage);
+    }
+
+    async function loadContentFeed(keyword, page, isRelated = false) {
+        if (loading) return;
+        loading = true;
+        document.getElementById("networkLoader").style.display = "block";
+
+        try {
+            const res = await fetch(`${API_URL}?query=${encodeURIComponent(keyword)}&per_page=12&page=${page}&thumbsize=big`);
+            const data = await res.json();
+
+            if (data && data.videos && data.videos.length > 0) {
+                if (isRelated) {
+                    renderGridSystem(data.videos, "relatedVideoGrid");
+                } else {
+                    if (!appendMode) document.getElementById("mainVideoGrid").innerHTML = "";
+                    renderGridSystem(data.videos, "mainVideoGrid");
+                }
+            }
+        } catch (e) { console.error(e); } 
+        finally { document.getElementById("networkLoader").style.display = "none"; loading = false; }
+    }
+
+    function renderGridSystem(videos, containerId) {
+        const container = document.getElementById(containerId);
+        if (!appendMode && containerId === "mainVideoGrid") container.innerHTML = "";
+        if (containerId === "relatedVideoGrid") container.innerHTML = ""; 
+
+        let flagEmoji = "🇲🇲"; let countryName = "Myanmar";
+        if (currentKeyword === "asian") { flagEmoji = "🌏"; countryName = "Asian"; }
+        if (currentKeyword === "japan") { flagEmoji = "🇯🇵"; countryName = "Japan"; }
+        if (currentKeyword === "mamas") { flagEmoji = "👑"; countryName = "Mamas"; }
+        if (currentKeyword === "Leak") { flagEmoji = "📸"; countryName = "Leak"; }
+
+        videos.forEach(v => {
+            const card = document.createElement("div");
+            card.className = "video-grid-card";
+            card.onclick = () => launchVideoViewPage(v.embed, v.title);
+            card.innerHTML = `
+                <div class="video-thumb-holder">
+                    <img src="${v.default_thumb.src}" alt="thumb" loading="lazy">
+                    <div class="country-flag-badge">
+                        <span>${flagEmoji}</span> <span>${countryName}</span>
+                    </div>
+                </div>
+                <div class="video-card-details">
+                    <h4>${v.title}</h4>
+                    <div class="video-card-meta"><span>👁️ ${parseInt(v.views).toLocaleString()}</span></div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function launchVideoViewPage(url, title) {
+        viewModeActive = true;
+        window.scrollTo({top: 0, behavior: 'smooth'});
+
+        document.getElementById("homeFeedPage").style.display = "none";
+        document.getElementById("searchBarBlock").style.display = "none";
+        document.getElementById("categoryPillsBlock").style.display = "none";
+
+        document.getElementById("dedicatedVideoPage").style.display = "block";
+        document.getElementById("videoIframe").src = url;
+        document.getElementById("videoTitle").innerText = title;
+
+        let randomRelatedPage = Math.floor(Math.random() * 4) + 1;
+        loadContentFeed(currentKeyword, randomRelatedPage, true);
+    }
+
+    function backToHomeFeed() {
+        viewModeActive = false;
+        document.getElementById("dedicatedVideoPage").style.display = "none";
+        document.getElementById("videoIframe").src = "";
+
+        document.getElementById("homeFeedPage").style.display = "block";
+        document.getElementById("searchBarBlock").style.display = "block";
+        document.getElementById("categoryPillsBlock").style.display = "block";
+    }
+
+    function triggerSearch() {
+        const queryInput = document.getElementById("userSearchInput").value.trim();
+        if (queryInput === "") return;
+        backToHomeFeed();
+        document.querySelectorAll('.tab-pill').forEach(el => el.classList.remove('active'));
+        
+        loadedVideoIds.clear(); currentKeyword = queryInput; currentPage = 1; appendMode = false;
+        loadContentFeed(currentKeyword, currentPage);
+    }
+
+    function handleSearchKeyPress(e) { if (e.key === "Enter") triggerSearch(); }
+
+    function fetchNewCategory(cat, tabId) {
+        backToHomeFeed();
+        document.getElementById("userSearchInput").value = ""; 
+        document.querySelectorAll('.tab-pill').forEach(el => el.classList.remove('active'));
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+
+        loadedVideoIds.clear(); currentKeyword = cat; appendMode = false;
+        currentPage = Math.floor(Math.random() * 4) + 1;
+        loadContentFeed(currentKeyword, currentPage);
+    }
+
+    window.onscroll = function() {
+        if (!viewModeActive && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 600) {
+            if(!loading) { appendMode = true; currentPage++; loadContentFeed(currentKeyword, currentPage); }
+        }
+    };
+</script>
+
+</body>
+</html>
